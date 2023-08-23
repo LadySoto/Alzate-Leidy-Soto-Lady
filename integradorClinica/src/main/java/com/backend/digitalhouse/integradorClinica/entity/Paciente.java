@@ -1,5 +1,6 @@
 package com.backend.digitalhouse.integradorClinica.entity;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class Paciente {

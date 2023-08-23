@@ -77,7 +77,8 @@ public class OdontologoDaoH2 implements IDao<Odontologo> {
                 odontologo = crearObjetoOdontologo(rst);
                 odontologosLista.add(odontologo);
             }
-            //nos falto el log aca
+            LOGGER.info("Se generó la lista de odontólogos: {}", odontologosLista);
+
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
             e.printStackTrace();
@@ -159,7 +160,37 @@ public class OdontologoDaoH2 implements IDao<Odontologo> {
 
     @Override
     public Odontologo modificar(Odontologo odontologo) {
-        return null;
+
+        Connection connection = null;
+
+        try {
+            connection = H2Connection.getConnection();
+
+            PreparedStatement ps = connection.prepareStatement("UPDATE ODONTOLOGOS SET MATRICULA = ?, NOMBRE = ?, APELLIDO = ? WHERE ID = ?");
+            ps.setInt(1, odontologo.getMatricula());
+            ps.setString(2, odontologo.getNombre());
+            ps.setString(3, odontologo.getApellido());
+            ps.setInt(4, odontologo.getId());
+            ps.execute();
+
+            LOGGER.warn("El odontologo con id " + odontologo.getId() + "ha sido modificado: " + odontologo);
+
+        } catch (SQLException e) {
+            LOGGER.error(e.getMessage());
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            LOGGER.error(e.getMessage());
+            e.printStackTrace();
+        } finally {
+            try {
+                connection.close();
+            } catch (Exception ex){
+                LOGGER.error("Ha ocurrido un error al intentar cerrar la bdd. " + ex.getMessage());
+                ex.printStackTrace();
+            }
+        }
+        return odontologo;
+
     }
     private Odontologo crearObjetoOdontologo(ResultSet rs) throws SQLException {
         int id = rs.getInt(1);
