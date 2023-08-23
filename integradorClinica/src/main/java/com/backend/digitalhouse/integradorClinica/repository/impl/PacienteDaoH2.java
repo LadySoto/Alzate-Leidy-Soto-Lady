@@ -32,12 +32,12 @@ public class PacienteDaoH2 implements IDao<Paciente> {
             pst.setString(1, paciente.getNombre());
             pst.setString(2, paciente.getApellido());
             pst.setInt(3, paciente.getDni());
-            pst.setDate(4, Date.valueOf(paciente.getFechaDeIngreso().toLocalDate()));
+            pst.setDate(4, Date.valueOf(paciente.getFechaDeIngreso()));
             pst.setInt(5,paciente.getDomicilio().getId());
             pst.execute();
 
             connection.commit();
-            paciente1 = new Paciente (paciente.getNombre(), paciente.getApellido(), paciente.getDni(), paciente.getFechaDeIngreso().toLocalDate(), domicilio);
+            paciente1 = new Paciente (paciente.getNombre(), paciente.getApellido(), paciente.getDni(), paciente.getFechaDeIngreso(), domicilio);
             ResultSet key = pst.getGeneratedKeys();
             while (key.next()) {
                 paciente1.setId(key.getInt(1));
@@ -177,7 +177,7 @@ public class PacienteDaoH2 implements IDao<Paciente> {
             ps.setString(1,paciente.getNombre());
             ps.setString(2, paciente.getApellido());
             ps.setInt(3, paciente.getDni());
-            ps.setDate(4, Date.valueOf(paciente.getFechaDeIngreso().toLocalDate()));
+            ps.setDate(4, Date.valueOf(paciente.getFechaDeIngreso()));
             ps.setInt(5, paciente.getDomicilio().getId());
             ps.setInt(6, paciente.getId());
             ps.execute();
