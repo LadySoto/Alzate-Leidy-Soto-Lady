@@ -1,4 +1,4 @@
-package com.backend.digitalhouse.integradorClinica.service.impl;
+package com.backend.digitalhouse.integradorClinica.service;
 
 import com.backend.digitalhouse.integradorClinica.entity.Odontologo;
 
@@ -6,10 +6,10 @@ import java.util.List;
 
 public interface IOdontologoService {
 
-    Odontologo registrar (Odontologo odontologo);
-    List<Odontologo> listar();
-    Odontologo buscarPorId (int id);
-    void eliminar (int id);
-    Odontologo modificar (Odontologo odontologo);
+    Odontologo registrarOdontologo (Odontologo odontologo);
+    List<Odontologo> listarOdontologos();
+    Odontologo buscarOdontologoPorId (int id);
+    void eliminarOdontologo (int id);
+    Odontologo modificarOdontologo (Odontologo odontologo);
 
 }

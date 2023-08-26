@@ -1,27 +1,43 @@
 package com.backend.digitalhouse.integradorClinica.service.impl;
 
 import com.backend.digitalhouse.integradorClinica.entity.Paciente;
-import com.backend.digitalhouse.integradorClinica.entity.Paciente;
 import com.backend.digitalhouse.integradorClinica.repository.IDao;
+import com.backend.digitalhouse.integradorClinica.service.IPacienteService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
-public class PacienteService {
+@Service
+public class PacienteService implements IPacienteService {
     private final IDao<Paciente> pacienteIDao;
 
     public PacienteService(IDao<Paciente> pacienteIDao) {
         this.pacienteIDao = pacienteIDao;
     }
 
-    public Paciente registrarOdontologo(Paciente odontologo) {
-        return pacienteIDao.registrar(odontologo);
+
+    @Override
+    public Paciente registrarPaciente(Paciente paciente) {
+        return pacienteIDao.registrar(paciente);
     }
 
-    public List<Paciente> listarOdontologos() {
+    @Override
+    public List<Paciente> listarPacientes() {
         return pacienteIDao.listar();
     }
 
-    public Paciente buscarOdontologo(int id){return pacienteIDao.buscarPorId(id);}
-    public void eliminarOdontologo(int id){pacienteIDao.eliminar(id);}
-    public Paciente modificarOdontologo(Paciente odontologo){return pacienteIDao.modificar(odontologo);}
+    @Override
+    public Paciente buscarPacientePorId(int id) {
+        return pacienteIDao.buscarPorId(id);
+    }
+
+    @Override
+    public void eliminarPaciente(int id) {
+        pacienteIDao.eliminar(id);
+    }
+
+    @Override
+    public Paciente modificarPaciente(Paciente paciente) {
+
+        return pacienteIDao.modificar(paciente);
+    }
 }

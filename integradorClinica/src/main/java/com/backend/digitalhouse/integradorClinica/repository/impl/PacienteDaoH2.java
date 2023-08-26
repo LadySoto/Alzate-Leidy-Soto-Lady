@@ -6,11 +6,14 @@ import com.backend.digitalhouse.integradorClinica.repository.H2Connection;
 import com.backend.digitalhouse.integradorClinica.repository.IDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDate;
+
+@Component
 
 public class PacienteDaoH2 implements IDao<Paciente> {
 

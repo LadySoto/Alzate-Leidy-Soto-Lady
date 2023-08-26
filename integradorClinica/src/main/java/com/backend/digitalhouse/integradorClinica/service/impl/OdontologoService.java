@@ -2,10 +2,11 @@ package com.backend.digitalhouse.integradorClinica.service.impl;
 
 import com.backend.digitalhouse.integradorClinica.entity.Odontologo;
 import com.backend.digitalhouse.integradorClinica.repository.IDao;
+import com.backend.digitalhouse.integradorClinica.service.IOdontologoService;
 
 import java.util.List;
 
-public class OdontologoService {
+public class OdontologoService implements IOdontologoService {
 
     private final IDao<Odontologo> odontologoIDao;
 
@@ -13,15 +14,28 @@ public class OdontologoService {
         this.odontologoIDao = odontologoIDao;
     }
 
+    @Override
     public Odontologo registrarOdontologo(Odontologo odontologo) {
         return odontologoIDao.registrar(odontologo);
     }
 
+    @Override
     public List<Odontologo> listarOdontologos() {
         return odontologoIDao.listar();
     }
 
-    public Odontologo buscarOdontologo(int id){return odontologoIDao.buscarPorId(id);}
-    public void eliminarOdontologo(int id){odontologoIDao.eliminar(id);}
-    public Odontologo modificarOdontologo(Odontologo odontologo){return odontologoIDao.modificar(odontologo);}
+    @Override
+    public Odontologo buscarOdontologoPorId(int id) {
+        return odontologoIDao.buscarPorId(id);
+    }
+
+    @Override
+    public void eliminarOdontologo(int id) {
+        odontologoIDao.eliminar(id);
+
+    }
+    @Override
+    public Odontologo modificarOdontologo(Odontologo odontologo) {
+        return odontologoIDao.modificar(odontologo);
+    }
 }

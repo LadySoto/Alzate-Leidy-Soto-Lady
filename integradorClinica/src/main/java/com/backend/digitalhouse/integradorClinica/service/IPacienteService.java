@@ -6,10 +6,10 @@ import java.util.List;
 
 public interface IPacienteService {
 
-    Paciente registrar (Paciente paciente);
-    List<Paciente> listar();
-    Paciente buscarPorId (int id);
+    Paciente registrarPaciente (Paciente paciente);
+    List<Paciente> listarPacientes();
+    Paciente buscarPacientePorId (int id);
 
-    void eliminar (int id);
-    Paciente modificar (Paciente paciente);
+    void eliminarPaciente (int id);
+    Paciente modificarPaciente (Paciente paciente);
 }
