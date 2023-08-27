@@ -159,7 +159,7 @@ public class OdontologoDaoH2 implements IDao<Odontologo> {
     }
 
     @Override
-    public Odontologo modificar(Odontologo odontologo) {
+    public Odontologo modificar(Odontologo odontologoModificado) {
 
         Connection connection = null;
 
@@ -167,13 +167,13 @@ public class OdontologoDaoH2 implements IDao<Odontologo> {
             connection = H2Connection.getConnection();
 
             PreparedStatement ps = connection.prepareStatement("UPDATE ODONTOLOGOS SET MATRICULA = ?, NOMBRE = ?, APELLIDO = ? WHERE ID = ?");
-            ps.setInt(1, odontologo.getMatricula());
-            ps.setString(2, odontologo.getNombre());
-            ps.setString(3, odontologo.getApellido());
-            ps.setInt(4, odontologo.getId());
+            ps.setInt(1, odontologoModificado.getMatricula());
+            ps.setString(2, odontologoModificado.getNombre());
+            ps.setString(3, odontologoModificado.getApellido());
+            ps.setInt(4, odontologoModificado.getId());
             ps.execute();
 
-            LOGGER.warn("El odontologo con id " + odontologo.getId() + "ha sido modificado: " + odontologo);
+            LOGGER.warn("El odontologo con id " + odontologoModificado.getId() + "ha sido modificado: " + odontologoModificado);
 
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
@@ -189,7 +189,7 @@ public class OdontologoDaoH2 implements IDao<Odontologo> {
                 ex.printStackTrace();
             }
         }
-        return odontologo;
+        return odontologoModificado;
 
     }
     private Odontologo crearObjetoOdontologo(ResultSet rs) throws SQLException {

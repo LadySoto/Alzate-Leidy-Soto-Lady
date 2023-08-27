@@ -170,22 +170,22 @@ public class PacienteDaoH2 implements IDao<Paciente> {
     }
 
     @Override
-    public Paciente modificar(Paciente paciente) {
+    public Paciente modificar(Paciente pacienteModificado) {
         Connection connection = null;
 
         try {
             connection = H2Connection.getConnection();
 
             PreparedStatement ps = connection.prepareStatement("UPDATE PACIENTES SET NOMBRE = ?, APELLIDO = ?, DNI = ?, FECHA_DE_INGRESO = ?, ID_DOMICILIO = ? WHERE ID = ?");
-            ps.setString(1,paciente.getNombre());
-            ps.setString(2, paciente.getApellido());
-            ps.setInt(3, paciente.getDni());
-            ps.setDate(4, Date.valueOf(paciente.getFechaDeIngreso()));
-            ps.setInt(5, paciente.getDomicilio().getId());
-            ps.setInt(6, paciente.getId());
+            ps.setString(1,pacienteModificado.getNombre());
+            ps.setString(2, pacienteModificado.getApellido());
+            ps.setInt(3, pacienteModificado.getDni());
+            ps.setDate(4, Date.valueOf(pacienteModificado.getFechaDeIngreso()));
+            ps.setInt(5, pacienteModificado.getDomicilio().getId());
+            ps.setInt(6, pacienteModificado.getId());
             ps.execute();
 
-            LOGGER.warn("El paciente con id " + paciente.getId() + "ha sido modificado: " + paciente);
+            LOGGER.warn("El paciente con id " + pacienteModificado.getId() + "ha sido modificado: " + pacienteModificado);
 
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
@@ -201,7 +201,7 @@ public class PacienteDaoH2 implements IDao<Paciente> {
                 ex.printStackTrace();
             }
         }
-        return paciente;
+        return pacienteModificado;
     }
 
     private Paciente crearObjetoPaciente(ResultSet rs) throws SQLException {

@@ -21,7 +21,6 @@ public class PacienteController {
     @PostMapping("registrar")
     public Paciente registrarPaciente(@RequestBody Paciente paciente){
         return pacienteService.registrarPaciente(paciente);
-
     }
 
     //Endoint para modificar un paciente - Put
@@ -29,5 +28,11 @@ public class PacienteController {
     public Paciente modificarPaciente(@RequestBody Paciente paciente){
         return pacienteService.modificarPaciente(paciente);
     }
+
+    //Endpoint para buscar un pacientes por id - Tipo GET
+
+    //Endpoint para eliminar un pacientes por id - Tipo DELET
+
+    //Endponit para listar los pacientes - Tipo GET
 
 }

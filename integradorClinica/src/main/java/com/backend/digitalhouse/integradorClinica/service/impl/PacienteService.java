@@ -36,8 +36,8 @@ public class PacienteService implements IPacienteService {
     }
 
     @Override
-    public Paciente modificarPaciente(Paciente paciente) {
+    public Paciente modificarPaciente(Paciente pacienteModificado) {
 
-        return pacienteIDao.modificar(paciente);
+        return pacienteIDao.modificar(pacienteModificado);
     }
 }

@@ -3,9 +3,11 @@ package com.backend.digitalhouse.integradorClinica.service.impl;
 import com.backend.digitalhouse.integradorClinica.entity.Odontologo;
 import com.backend.digitalhouse.integradorClinica.repository.IDao;
 import com.backend.digitalhouse.integradorClinica.service.IOdontologoService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class OdontologoService implements IOdontologoService {
 
     private final IDao<Odontologo> odontologoIDao;
@@ -35,7 +37,7 @@ public class OdontologoService implements IOdontologoService {
 
     }
     @Override
-    public Odontologo modificarOdontologo(Odontologo odontologo) {
-        return odontologoIDao.modificar(odontologo);
+    public Odontologo modificarOdontologo(Odontologo odontologoModificado) {
+        return odontologoIDao.modificar(odontologoModificado);
     }
 }
