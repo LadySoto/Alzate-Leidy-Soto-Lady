@@ -165,6 +165,7 @@ public class DomicilioDaoH2 implements IDao<Domicilio> {
         return null;
     }
 
+
     private Domicilio crearObjetoDomicilio(ResultSet rs) throws SQLException {
         int id = rs.getInt(1);
         String calle = rs.getString(2);
