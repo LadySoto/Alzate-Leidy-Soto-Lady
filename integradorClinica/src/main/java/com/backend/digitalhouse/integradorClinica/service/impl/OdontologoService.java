@@ -1,9 +1,11 @@
 package com.backend.digitalhouse.integradorClinica.service.impl;
 
 import com.backend.digitalhouse.integradorClinica.dto.entrada.odontologo.OdontologoEntradaDto;
+import com.backend.digitalhouse.integradorClinica.dto.salida.odontologo.OdontologoSalidaDto;
 import com.backend.digitalhouse.integradorClinica.entity.Odontologo;
 import com.backend.digitalhouse.integradorClinica.repository.IDao;
 import com.backend.digitalhouse.integradorClinica.service.IOdontologoService;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,14 +14,19 @@ import java.util.List;
 public class OdontologoService implements IOdontologoService {
 
     private final IDao<Odontologo> odontologoIDao;
+    private final ModelMapper modelMapper;
 
-    public OdontologoService(IDao<Odontologo> odontologoIDao) {
+    public OdontologoService(IDao<Odontologo> odontologoIDao, ModelMapper modelMapper) {
         this.odontologoIDao = odontologoIDao;
+        this.modelMapper = modelMapper;
     }
 
     @Override
-    public Odontologo registrarOdontologo(OdontologoEntradaDto odontologo) {
-        return odontologoIDao.registrar(odontologo);
+    public OdontologoSalidaDto registrarOdontologo(OdontologoEntradaDto odontologo) {
+
+        Odontologo odontologoNuevo = odontologoIDao.registrar(mapToEntity(odontologo));
+
+        return mapToDtoSalida(odontologoNuevo);
     }
 
     @Override
@@ -40,5 +47,13 @@ public class OdontologoService implements IOdontologoService {
     @Override
     public Odontologo modificarOdontologo(Odontologo odontologoModificado) {
         return odontologoIDao.modificar(odontologoModificado);
+    }
+
+    public Odontologo mapToEntity(OdontologoEntradaDto odontologoEntradaDto){
+        return modelMapper.map(odontologoEntradaDto, Odontologo.class);
+    }
+
+    public OdontologoSalidaDto mapToDtoSalida(Odontologo odontologo){
+        return modelMapper.map(odontologo, OdontologoSalidaDto.class);
     }
 }

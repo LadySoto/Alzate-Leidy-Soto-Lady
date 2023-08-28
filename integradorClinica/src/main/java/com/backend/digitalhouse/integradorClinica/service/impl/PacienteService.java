@@ -27,7 +27,7 @@ public class PacienteService implements IPacienteService {
         Paciente pacienteApersistir = mapToEntity(paciente);
         Paciente pacienteRegistrado = pacienteIDao.registrar(pacienteApersistir);
 
-        return pacienteIDao.registrar(paciente);
+        return mapToDtoSalida(pacienteRegistrado);
     }
 
     @Override
@@ -53,10 +53,16 @@ public class PacienteService implements IPacienteService {
     private void configureMapping(){
         modelMapper.typeMap(PacienteEntradaDto.class, Paciente.class)
                 .addMappings(mapper -> mapper.map(PacienteEntradaDto::getDomicilio, Paciente::setDomicilio));
+        modelMapper.typeMap(Paciente.class, PacienteSalidaDto.class)
+                .addMappings(mapper -> mapper.map(Paciente::getDomicilio, PacienteSalidaDto::setDomicilio));
     }
 
     public Paciente mapToEntity(PacienteEntradaDto pacienteEntradaDto){
         return modelMapper.map(pacienteEntradaDto, Paciente.class);
+    }
+
+    public PacienteSalidaDto mapToDtoSalida(Paciente paciente){
+        return modelMapper.map(paciente, PacienteSalidaDto.class);
     }
 
 }
