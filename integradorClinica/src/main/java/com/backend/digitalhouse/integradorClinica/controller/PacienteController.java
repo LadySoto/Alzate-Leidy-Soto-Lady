@@ -1,5 +1,6 @@
 package com.backend.digitalhouse.integradorClinica.controller;
 
+import com.backend.digitalhouse.integradorClinica.dto.entrada.paciente.PacienteEntradaDto;
 import com.backend.digitalhouse.integradorClinica.entity.Paciente;
 import com.backend.digitalhouse.integradorClinica.service.IPacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +22,13 @@ public class PacienteController {
 
     //Endpoint para registrar paciente - Tipo POST
     @PostMapping("registrar")
-    public Paciente registrarPaciente(@RequestBody Paciente paciente){
+    public Paciente registrarPaciente(@RequestBody PacienteEntradaDto paciente){
         return pacienteService.registrarPaciente(paciente);
     }
 
     //Endoint para modificar un paciente - Put
     @PutMapping("modificar")
-    public Paciente modificarPaciente(@RequestBody Paciente paciente){
+    public Paciente modificarPaciente(@RequestBody PacienteEntradaDto paciente){
         return pacienteService.modificarPaciente(paciente);
     }
 

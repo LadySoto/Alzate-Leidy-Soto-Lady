@@ -1,5 +1,6 @@
 package com.backend.digitalhouse.integradorClinica.service.impl;
 
+import com.backend.digitalhouse.integradorClinica.dto.entrada.odontologo.OdontologoEntradaDto;
 import com.backend.digitalhouse.integradorClinica.entity.Odontologo;
 import com.backend.digitalhouse.integradorClinica.repository.IDao;
 import com.backend.digitalhouse.integradorClinica.service.IOdontologoService;
@@ -17,7 +18,7 @@ public class OdontologoService implements IOdontologoService {
     }
 
     @Override
-    public Odontologo registrarOdontologo(Odontologo odontologo) {
+    public Odontologo registrarOdontologo(OdontologoEntradaDto odontologo) {
         return odontologoIDao.registrar(odontologo);
     }
 

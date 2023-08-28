@@ -1,5 +1,6 @@
 package com.backend.digitalhouse.integradorClinica.controller;
 
+import com.backend.digitalhouse.integradorClinica.dto.entrada.odontologo.OdontologoEntradaDto;
 import com.backend.digitalhouse.integradorClinica.entity.Odontologo;
 import com.backend.digitalhouse.integradorClinica.service.IOdontologoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class OdontologoController {
 
     //Endpoint para registrar odontologo - Tipo POST
     @PostMapping("registrar")
-    public Odontologo registrarOdontologo(@RequestBody Odontologo odontologo){
+    public Odontologo registrarOdontologo(@RequestBody OdontologoEntradaDto odontologo){
         return odontologoService.registrarOdontologo(odontologo);
     }
 
