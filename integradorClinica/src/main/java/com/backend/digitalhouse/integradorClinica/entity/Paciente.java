@@ -1,43 +1,46 @@
 package com.backend.digitalhouse.integradorClinica.entity;
 
+import javax.persistence.*;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
+@Entity
+@Table (name = "PACIENTES")
 public class Paciente {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "PACIENTE_ID")
+    private Long id;
     private String nombre;
     private String apellido;
     private int dni;
     private LocalDate fechaDeIngreso;
+
+    @OneToOne
+    @JoinColumn(name = "domicilio_id")
     private Domicilio domicilio;
+
+    @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private List<Turno> turnos = new ArrayList<>();
 
     public Paciente() {
     }
 
-    public Paciente(int id, String nombre, String apellido, int dni, LocalDate fechaDeIngreso, Domicilio domicilio) {
-        this.id = id;
+    public Paciente(String nombre, String apellido, int dni, LocalDate fechaDeIngreso, Domicilio domicilio, List<Turno> turnos) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.fechaDeIngreso = fechaDeIngreso;
         this.domicilio = domicilio;
+        this.turnos = turnos;
     }
 
-    public Paciente(String nombre, String apellido, int dni, LocalDate fechaDeIngreso, Domicilio domicilio) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.dni = dni;
-        this.fechaDeIngreso = fechaDeIngreso;
-        this.domicilio = domicilio;
-    }
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getNombre() {
         return nombre;

@@ -1,33 +1,37 @@
 package com.backend.digitalhouse.integradorClinica.entity;
 
+import jdk.dynalink.linker.LinkerServices;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "ODONTOLOGOS")
 public class Odontologo {
-   private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ODONTOLOGO_ID")
+   private long id;
    private int matricula;
    private String nombre;
    private String apellido;
 
+   @OneToMany(mappedBy = "odontologo", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+   private List<Turno> turnos = new ArrayList<>();
+
     public Odontologo() {
     }
 
-    public Odontologo(int id, int matricula, String nombre, String apellido) {
-        this.id = id;
+    public Odontologo(int matricula, String nombre, String apellido, List<Turno> turnos) {
         this.matricula = matricula;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.turnos = turnos;
     }
 
-    public Odontologo(int matricula, String nombre, String apellido) {
-        this.matricula = matricula;
-        this.nombre = nombre;
-        this.apellido = apellido;
-    }
-
-    public int getId() {
+    public long getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getMatricula() {

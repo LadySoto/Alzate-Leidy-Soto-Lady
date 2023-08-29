@@ -1,11 +1,22 @@
 package com.backend.digitalhouse.integradorClinica.entity;
 
+import jdk.jfr.Enabled;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "DOMICILIOS")
 public class Domicilio {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "DOMICILIO_ID")
+    private Long id;
+
     private String calle;
     private int numero;
     private String localidad;
     private String provincia;
+
 
     public Domicilio() {
     }
@@ -17,21 +28,10 @@ public class Domicilio {
         this.provincia = provincia;
     }
 
-    public Domicilio(int id, String calle, int numero, String localidad, String provincia) {
-        this.id = id;
-        this.calle = calle;
-        this.numero = numero;
-        this.localidad = localidad;
-        this.provincia = provincia;
-    }
-
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getCalle() {
         return calle;
