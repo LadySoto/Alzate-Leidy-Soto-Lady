@@ -13,8 +13,14 @@ public class Odontologo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ODONTOLOGO_ID")
    private long id;
+
+
    private int matricula;
+
+    @Column(length = 50)
    private String nombre;
+
+    @Column(length = 50)
    private String apellido;
 
    @OneToMany(mappedBy = "odontologo", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
@@ -58,8 +64,4 @@ public class Odontologo {
         this.apellido = apellido;
     }
 
-    @Override
-    public String toString() {
-        return "Id: " + id + " - Nombre: " + nombre + " - Apellido: " + apellido + " - Matricula: " + matricula;
-    }
 }

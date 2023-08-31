@@ -13,12 +13,16 @@ public class Paciente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PACIENTE_ID")
     private Long id;
+
+    @Column(length = 50)
     private String nombre;
+
+    @Column(length = 50)
     private String apellido;
     private int dni;
     private LocalDate fechaDeIngreso;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "domicilio_id")
     private Domicilio domicilio;
 
@@ -80,9 +84,5 @@ public class Paciente {
 
     public void setDomicilio(Domicilio domicilio) {
         this.domicilio = domicilio;
-    }
-    @Override
-    public String toString() {
-        return "Id: " + id + " - Nombre: " + nombre + " - Apellido: " + apellido + " - DNI: " + dni + " - Fechas de ingreso: " + fechaDeIngreso + " - Domicilio: " + domicilio;
     }
 }

@@ -33,7 +33,7 @@ public class OdontologoController {
 
     //Endpoint para buscar odontologo por id - Tipo GET
     @GetMapping("buscar")
-    public Odontologo buscarOdontologoPorId(@RequestParam int id){
+    public Odontologo buscarOdontologoPorId(@RequestParam Long id){
         return odontologoService.buscarOdontologoPorId(id);
     }
 
