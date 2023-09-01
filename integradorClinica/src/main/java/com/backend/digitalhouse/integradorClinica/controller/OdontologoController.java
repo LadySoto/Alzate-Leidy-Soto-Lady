@@ -1,11 +1,16 @@
 package com.backend.digitalhouse.integradorClinica.controller;
 
+import com.backend.digitalhouse.integradorClinica.dto.entrada.modificacion.OdontologoModificacionEntradaDto;
 import com.backend.digitalhouse.integradorClinica.dto.entrada.odontologo.OdontologoEntradaDto;
+import com.backend.digitalhouse.integradorClinica.dto.salida.odontologo.OdontologoSalidaDto;
 import com.backend.digitalhouse.integradorClinica.entity.Odontologo;
 import com.backend.digitalhouse.integradorClinica.service.IOdontologoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -21,31 +26,32 @@ public class OdontologoController {
 
     //Endpoint para registrar odontologo - Tipo POST
     @PostMapping("registrar")
-    public Odontologo registrarOdontologo(@RequestBody OdontologoEntradaDto odontologo){
-        return odontologoService.registrarOdontologo(odontologo);
+    public ResponseEntity<OdontologoSalidaDto> registrarOdontologo(@Valid @RequestBody OdontologoEntradaDto odontologo){
+        return new ResponseEntity<>(odontologoService.registrarOdontologo(odontologo), HttpStatus.CREATED);
     }
 
     //Endpoint para modificar odontologo - Tipo PUT
     @PutMapping("modificar")
-    public Odontologo modificarOdontologo(@RequestBody Odontologo odontologoModificado){
-        return odontologoService.modificarOdontologo(odontologoModificado);
+    public ResponseEntity<OdontologoSalidaDto> modificarOdontologo(@Valid @RequestBody OdontologoModificacionEntradaDto odontologoModificado){
+        return new ResponseEntity<>(odontologoService.modificarOdontologo(odontologoModificado),HttpStatus.OK ) ;
     }
 
     //Endpoint para buscar odontologo por id - Tipo GET
     @GetMapping("buscar")
-    public Odontologo buscarOdontologoPorId(@RequestParam Long id){
-        return odontologoService.buscarOdontologoPorId(id);
+    public ResponseEntity<OdontologoSalidaDto> buscarOdontologoPorId(@RequestParam Long id){
+        return new ResponseEntity<>(odontologoService.buscarOdontologoPorId(id),HttpStatus.OK );
     }
 
     //Endpoint para eliminar odontologo por id - Tipo DELET
     @DeleteMapping("eliminar/{id}")
-    public void eliminarOdontologoPorId(@PathVariable int id){
+    public ResponseEntity<?> eliminarOdontologoPorId(@PathVariable long id){
         odontologoService.eliminarOdontologo(id);
+        return new ResponseEntity<>("Odontologo eliminado correctamente",HttpStatus.NO_CONTENT);
     }
 
     //Endpoint para listar odontologos - Tipo GET
     @GetMapping("listar")
-    public List<Odontologo> listarOdontologos(){
-        return odontologoService.listarOdontologos();
+    public ResponseEntity<List<OdontologoSalidaDto>> listarOdontologos(){
+        return new ResponseEntity<>(odontologoService.listarOdontologos(),HttpStatus.OK );
     }
 }
