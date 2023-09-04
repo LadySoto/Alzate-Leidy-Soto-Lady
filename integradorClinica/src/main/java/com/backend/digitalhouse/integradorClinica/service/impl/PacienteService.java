@@ -18,9 +18,11 @@ public class PacienteService implements IPacienteService {
     private static final Logger LOGGER = LoggerFactory.getLogger(PacienteService.class);
     private final PacienteRepository pacienteRepository;
     private final ModelMapper modelMapper;
+
     public PacienteService(PacienteRepository pacienteRepository, ModelMapper modelMapper) {
         this.pacienteRepository = pacienteRepository;
         this.modelMapper = modelMapper;
+        configureMapping();
     }
 
     @Override
@@ -36,7 +38,9 @@ public class PacienteService implements IPacienteService {
     public List<PacienteSalidaDto> listarPacientes() {
         List<Paciente> listaPacientes = pacienteRepository.findAll();
         LOGGER.info("Listado de pacientes: {}", listaPacientes);
-        return listaPacientes.stream().map(this::mapToDtoSalida).toList();
+        return listaPacientes.stream()
+                .map(this::mapToDtoSalida)
+                .toList();
     }
 
     @Override

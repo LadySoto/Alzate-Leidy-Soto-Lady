@@ -1,15 +1,15 @@
 package com.backend.digitalhouse.integradorClinica.dto.salida.turno;
 
-public class OdontologoSalidaDto {
+public class OdontologoTurnoSalidaDto {
 
     private long id;
     private String nombre;
     private String apellido;
 
-    public OdontologoSalidaDto() {
+    public OdontologoTurnoSalidaDto() {
     }
 
-    public OdontologoSalidaDto(long id, String nombre, String apellido) {
+    public OdontologoTurnoSalidaDto(long id, String nombre, String apellido) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;

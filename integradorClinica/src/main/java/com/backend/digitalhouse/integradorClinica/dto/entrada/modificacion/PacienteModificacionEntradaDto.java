@@ -21,12 +21,12 @@ public class PacienteModificacionEntradaDto {
     @NotNull
     private LocalDate fechaDeIngreso;
 
-    private Domicilio domicilio;
+    private DomicilioModificacionEntradaDto domicilio;
 
     public PacienteModificacionEntradaDto() {
     }
 
-    public PacienteModificacionEntradaDto(Long id, String nombre, String apellido, int dni, LocalDate fechaDeIngreso, Domicilio domicilio) {
+    public PacienteModificacionEntradaDto(Long id, String nombre, String apellido, int dni, LocalDate fechaDeIngreso, DomicilioModificacionEntradaDto domicilio) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -75,11 +75,11 @@ public class PacienteModificacionEntradaDto {
         this.fechaDeIngreso = fechaDeIngreso;
     }
 
-    public Domicilio getDomicilio() {
+    public DomicilioModificacionEntradaDto getDomicilio() {
         return domicilio;
     }
 
-    public void setDomicilio(Domicilio domicilio) {
+    public void setDomicilio(DomicilioModificacionEntradaDto domicilio) {
         this.domicilio = domicilio;
     }
 }

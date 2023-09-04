@@ -6,16 +6,16 @@ public class TurnoSalidaDto {
 
     private long id;
     private PacienteTurnoSalidaDto pacienteTurnoSalidaDto;
-    private OdontologoSalidaDto odontologoSalidaDto;
+    private OdontologoTurnoSalidaDto odontologoTurnoSalidaDto;
     private LocalDateTime fechaYHora;
 
     public TurnoSalidaDto() {
     }
 
-    public TurnoSalidaDto(long id, PacienteTurnoSalidaDto pacienteTurnoSalidaDto, OdontologoSalidaDto odontologoSalidaDto, LocalDateTime fechaYHora) {
+    public TurnoSalidaDto(long id, PacienteTurnoSalidaDto pacienteTurnoSalidaDto, OdontologoTurnoSalidaDto odontologoSalidaDto, LocalDateTime fechaYHora) {
         this.id = id;
         this.pacienteTurnoSalidaDto = pacienteTurnoSalidaDto;
-        this.odontologoSalidaDto = odontologoSalidaDto;
+        this.odontologoTurnoSalidaDto = odontologoSalidaDto;
         this.fechaYHora = fechaYHora;
     }
 
@@ -35,12 +35,12 @@ public class TurnoSalidaDto {
         this.pacienteTurnoSalidaDto = pacienteTurnoSalidaDto;
     }
 
-    public OdontologoSalidaDto getOdontologoSalidaDto() {
-        return odontologoSalidaDto;
+    public OdontologoTurnoSalidaDto getOdontologoSalidaDto() {
+        return odontologoTurnoSalidaDto;
     }
 
-    public void setOdontologoSalidaDto(OdontologoSalidaDto odontologoSalidaDto) {
-        this.odontologoSalidaDto = odontologoSalidaDto;
+    public void setOdontologoSalidaDto(OdontologoTurnoSalidaDto odontologoTurnoSalidaDto) {
+        this.odontologoTurnoSalidaDto = odontologoTurnoSalidaDto;
     }
 
     public LocalDateTime getFechaYHora() {
