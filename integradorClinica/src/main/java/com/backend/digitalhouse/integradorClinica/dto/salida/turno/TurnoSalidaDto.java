@@ -12,10 +12,10 @@ public class TurnoSalidaDto {
     public TurnoSalidaDto() {
     }
 
-    public TurnoSalidaDto(long id, PacienteTurnoSalidaDto pacienteTurnoSalidaDto, OdontologoTurnoSalidaDto odontologoSalidaDto, LocalDateTime fechaYHora) {
+    public TurnoSalidaDto(long id, PacienteTurnoSalidaDto pacienteTurnoSalidaDto, OdontologoTurnoSalidaDto odontologoTurnoSalidaDto, LocalDateTime fechaYHora) {
         this.id = id;
         this.pacienteTurnoSalidaDto = pacienteTurnoSalidaDto;
-        this.odontologoTurnoSalidaDto = odontologoSalidaDto;
+        this.odontologoTurnoSalidaDto = odontologoTurnoSalidaDto;
         this.fechaYHora = fechaYHora;
     }
 
@@ -35,7 +35,7 @@ public class TurnoSalidaDto {
         this.pacienteTurnoSalidaDto = pacienteTurnoSalidaDto;
     }
 
-    public OdontologoTurnoSalidaDto getOdontologoSalidaDto() {
+    public OdontologoTurnoSalidaDto getOdontologoTurnoSalidaDto() {
         return odontologoTurnoSalidaDto;
     }
 
