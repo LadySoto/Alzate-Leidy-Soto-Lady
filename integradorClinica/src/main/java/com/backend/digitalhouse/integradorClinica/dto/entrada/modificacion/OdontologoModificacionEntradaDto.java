@@ -10,7 +10,7 @@ public class OdontologoModificacionEntradaDto {
     private long id;
 
     @NotNull
-    private int matricula;
+    private String matricula;
 
     @NotNull
     private String nombre;
@@ -22,7 +22,7 @@ public class OdontologoModificacionEntradaDto {
     public OdontologoModificacionEntradaDto() {
     }
 
-    public OdontologoModificacionEntradaDto(long id, int matricula, String nombre, String apellido) {
+    public OdontologoModificacionEntradaDto(long id, String matricula, String nombre, String apellido) {
         this.id = id;
         this.matricula = matricula;
         this.nombre = nombre;
@@ -37,11 +37,11 @@ public class OdontologoModificacionEntradaDto {
         this.id = id;
     }
 
-    public int getMatricula() {
+    public String getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(int matricula) {
+    public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
 

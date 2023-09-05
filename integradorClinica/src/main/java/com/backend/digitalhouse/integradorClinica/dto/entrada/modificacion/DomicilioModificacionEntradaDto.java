@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DomicilioModificacionEntradaDto {
     @NotNull
-    private Long id;
+    private long id;
     @NotNull
 
     private String calle;
@@ -23,7 +23,7 @@ public class DomicilioModificacionEntradaDto {
     public DomicilioModificacionEntradaDto() {
     }
 
-    public DomicilioModificacionEntradaDto(Long id, String calle, int numero, String localidad, String provincia) {
+    public DomicilioModificacionEntradaDto(long id, String calle, int numero, String localidad, String provincia) {
         this.id = id;
         this.calle = calle;
         this.numero = numero;
@@ -31,11 +31,11 @@ public class DomicilioModificacionEntradaDto {
         this.provincia = provincia;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

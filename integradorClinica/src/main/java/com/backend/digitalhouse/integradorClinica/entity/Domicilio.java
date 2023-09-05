@@ -10,7 +10,7 @@ public class Domicilio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "DOMICILIO_ID")
-    private Long id;
+    private long id;
 
     private String calle;
     private int numero;
@@ -32,6 +32,9 @@ public class Domicilio {
         return id;
     }
 
+    public long setId() {
+        return id;
+    }
 
     public String getCalle() {
         return calle;

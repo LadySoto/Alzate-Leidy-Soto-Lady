@@ -4,6 +4,7 @@ import com.backend.digitalhouse.integradorClinica.dto.entrada.modificacion.Odont
 import com.backend.digitalhouse.integradorClinica.dto.entrada.odontologo.OdontologoEntradaDto;
 import com.backend.digitalhouse.integradorClinica.dto.salida.odontologo.OdontologoSalidaDto;
 import com.backend.digitalhouse.integradorClinica.entity.Odontologo;
+import com.backend.digitalhouse.integradorClinica.exceptions.ResourceNotFoundException;
 import com.backend.digitalhouse.integradorClinica.service.IOdontologoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,14 +38,14 @@ public class OdontologoController {
     }
 
     //Endpoint para buscar odontologo por id - Tipo GET
-    @GetMapping("buscar")
-    public ResponseEntity<OdontologoSalidaDto> buscarOdontologoPorId(@RequestParam Long id){
+    @GetMapping("buscar/{id}")
+    public ResponseEntity<OdontologoSalidaDto> buscarOdontologoPorId(@PathVariable long id){
         return new ResponseEntity<>(odontologoService.buscarOdontologoPorId(id),HttpStatus.OK );
     }
 
     //Endpoint para eliminar odontologo por id - Tipo DELET
     @DeleteMapping("eliminar/{id}")
-    public ResponseEntity<?> eliminarOdontologoPorId(@PathVariable long id){
+    public ResponseEntity<?> eliminarOdontologoPorId(@PathVariable long id) throws ResourceNotFoundException {
         odontologoService.eliminarOdontologo(id);
         return new ResponseEntity<>("Odontologo eliminado correctamente",HttpStatus.NO_CONTENT);
     }

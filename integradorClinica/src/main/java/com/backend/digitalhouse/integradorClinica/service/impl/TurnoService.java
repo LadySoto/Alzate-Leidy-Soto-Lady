@@ -7,8 +7,11 @@ import com.backend.digitalhouse.integradorClinica.dto.entrada.turno.TurnoEntrada
 import com.backend.digitalhouse.integradorClinica.dto.salida.odontologo.OdontologoSalidaDto;
 import com.backend.digitalhouse.integradorClinica.dto.salida.paciente.PacienteSalidaDto;
 import com.backend.digitalhouse.integradorClinica.dto.salida.turno.TurnoSalidaDto;
+import com.backend.digitalhouse.integradorClinica.entity.Odontologo;
 import com.backend.digitalhouse.integradorClinica.entity.Paciente;
 import com.backend.digitalhouse.integradorClinica.entity.Turno;
+import com.backend.digitalhouse.integradorClinica.exceptions.BadRequestException;
+import com.backend.digitalhouse.integradorClinica.exceptions.ResourceNotFoundException;
 import com.backend.digitalhouse.integradorClinica.repository.TurnoRepository;
 import com.backend.digitalhouse.integradorClinica.service.ITurnoService;
 import org.modelmapper.ModelMapper;
@@ -35,24 +38,25 @@ public class TurnoService implements ITurnoService {
         configureMapping();
     }
     @Override
-    public TurnoSalidaDto registrarTurno(TurnoEntradaDto turnoEntradaDto) {
+    public TurnoSalidaDto registrarTurno(TurnoEntradaDto turnoEntradaDto) throws BadRequestException {
         TurnoSalidaDto turnoSalidaDto;
         PacienteSalidaDto paciente = pacienteService.buscarPacientePorId(turnoEntradaDto.getPacienteId());
-        OdontologoSalidaDto odontologo = odontologoService.buscarOdontologoPorId(turnoEntradaDto.getOdntologoId());
+        OdontologoSalidaDto odontologo = odontologoService.buscarOdontologoPorId(turnoEntradaDto.getOdontologoId());
         String pacienteNoEnBd ="El paciente no se encuentra en nuestra base de datos";
         String odontologoNoEnBd ="El odontologo no se encuentra en nuestra base de datos";
 
         if(paciente == null || odontologo == null) {
             if (paciente == null && odontologo == null) {
                 LOGGER.info("El paciente y el odontologo no se encuentran en la base de datos");
-                throw new RuntimeException("El paciente y el odontologo no se encuentran en la base de datos");
+                throw new BadRequestException ("No se encuentra el paciente con id: " + turnoEntradaDto.getPacienteId() + " ni el odontologo con id: "+ turnoEntradaDto.getOdontologoId());
             } else if (paciente == null) {
                 LOGGER.error(pacienteNoEnBd);
-                throw new RuntimeException(pacienteNoEnBd);
+                throw new BadRequestException ("No se encuentra el paciente con id: " + turnoEntradaDto.getPacienteId());
             } else {
                 LOGGER.error(odontologoNoEnBd);
-                throw new RuntimeException(odontologoNoEnBd);
+                throw new BadRequestException ("No se encuentra el odontologo con id: "+ turnoEntradaDto.getOdontologoId());
             }
+
         }else{
            Turno turnoNuevo =  turnoRepository.save(dtoEntradaAEntidad(turnoEntradaDto));
            turnoSalidaDto = entidadADtoSalida(turnoNuevo);
@@ -72,12 +76,21 @@ public class TurnoService implements ITurnoService {
     }
 
     @Override
-    public TurnoSalidaDto buscarTurnoPorId(Long id) {
+    public TurnoSalidaDto buscarTurnoPorId(long id) {
         return null;
     }
 
     @Override
-    public void eliminarTurno(Long id) {
+    public void eliminarTurno(long id) throws ResourceNotFoundException {
+        Turno turnoABuscar = turnoRepository.findById(id).orElse(null);
+
+        if (turnoABuscar != null){
+            turnoRepository.deleteById(id);
+            LOGGER.warn("Se elimino el turno con ID: {}", id);
+        }else {
+            LOGGER.error("Turno no encontrado con id: {}", id);
+            throw new ResourceNotFoundException ("Turno no encontrado con id: "+ id);
+        }
 
     }
 

@@ -4,6 +4,7 @@ import com.backend.digitalhouse.integradorClinica.dto.entrada.modificacion.Pacie
 import com.backend.digitalhouse.integradorClinica.dto.entrada.paciente.PacienteEntradaDto;
 import com.backend.digitalhouse.integradorClinica.dto.salida.paciente.PacienteSalidaDto;
 import com.backend.digitalhouse.integradorClinica.entity.Paciente;
+import com.backend.digitalhouse.integradorClinica.exceptions.ResourceNotFoundException;
 import com.backend.digitalhouse.integradorClinica.service.IPacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,7 +46,7 @@ public class PacienteController {
 
     //Endpoint para eliminar un pacientes por id - Tipo DELET
     @DeleteMapping("eliminar/{id}")
-    public ResponseEntity<?> eliminarPaciente(@PathVariable long id){
+    public ResponseEntity<?> eliminarPaciente(@PathVariable long id) throws ResourceNotFoundException {
         pacienteService.eliminarPaciente(id);
         return new ResponseEntity<>("Paciente eliminado correctamente",HttpStatus.NO_CONTENT);
     }

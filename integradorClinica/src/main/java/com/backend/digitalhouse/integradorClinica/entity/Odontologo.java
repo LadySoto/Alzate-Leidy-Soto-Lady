@@ -15,7 +15,7 @@ public class Odontologo {
    private long id;
 
 
-   private int matricula;
+   private String matricula;
 
     @Column(length = 50)
    private String nombre;
@@ -29,7 +29,7 @@ public class Odontologo {
     public Odontologo() {
     }
 
-    public Odontologo(int matricula, String nombre, String apellido, List<Turno> turnos) {
+    public Odontologo(String matricula, String nombre, String apellido, List<Turno> turnos) {
         this.matricula = matricula;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -40,11 +40,15 @@ public class Odontologo {
         return id;
     }
 
-    public int getMatricula() {
+    public long setId() {
+        return id;
+    }
+
+    public String getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(int matricula) {
+    public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
 

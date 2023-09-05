@@ -3,6 +3,7 @@ package com.backend.digitalhouse.integradorClinica.controller;
 
 import com.backend.digitalhouse.integradorClinica.dto.entrada.turno.TurnoEntradaDto;
 import com.backend.digitalhouse.integradorClinica.dto.salida.turno.TurnoSalidaDto;
+import com.backend.digitalhouse.integradorClinica.exceptions.BadRequestException;
 import com.backend.digitalhouse.integradorClinica.service.ITurnoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,7 +25,7 @@ public class TurnoController {
     }
 
     @PostMapping ("/registrar")
-    public ResponseEntity<TurnoSalidaDto> registrarTurno(@Valid @RequestBody TurnoEntradaDto turnoEntradaDto){
+    public ResponseEntity<TurnoSalidaDto> registrarTurno(@Valid @RequestBody TurnoEntradaDto turnoEntradaDto) throws BadRequestException {
         return new ResponseEntity<>(turnoService.registrarTurno(turnoEntradaDto), HttpStatus.CREATED);
     }
 

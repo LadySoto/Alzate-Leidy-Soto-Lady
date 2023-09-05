@@ -12,7 +12,7 @@ public class Paciente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PACIENTE_ID")
-    private Long id;
+    private long id;
 
     @Column(length = 50)
     private String nombre;
@@ -41,7 +41,11 @@ public class Paciente {
         this.turnos = turnos;
     }
 
-    public Long getId() {
+    public long getId() {
+        return id;
+    }
+
+    public long setId() {
         return id;
     }
 

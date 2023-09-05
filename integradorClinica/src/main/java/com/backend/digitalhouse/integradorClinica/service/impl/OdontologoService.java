@@ -4,6 +4,7 @@ import com.backend.digitalhouse.integradorClinica.dto.entrada.modificacion.Odont
 import com.backend.digitalhouse.integradorClinica.dto.entrada.odontologo.OdontologoEntradaDto;
 import com.backend.digitalhouse.integradorClinica.dto.salida.odontologo.OdontologoSalidaDto;
 import com.backend.digitalhouse.integradorClinica.entity.Odontologo;
+import com.backend.digitalhouse.integradorClinica.exceptions.ResourceNotFoundException;
 import com.backend.digitalhouse.integradorClinica.repository.OdontologoRepository;
 import com.backend.digitalhouse.integradorClinica.service.IOdontologoService;
 import org.modelmapper.ModelMapper;
@@ -32,7 +33,6 @@ public class OdontologoService implements IOdontologoService {
         Odontologo odontoRegistrado = odontologoRepository.save(mapToEntity(odontologo));
         OdontologoSalidaDto odontologoSalidaDto = mapToDtoSalida(odontoRegistrado);
         LOGGER.info("Odontologo guardado: {}", odontologoSalidaDto);
-
         return odontologoSalidaDto;
     }
 
@@ -44,7 +44,7 @@ public class OdontologoService implements IOdontologoService {
     }
 
     @Override
-    public OdontologoSalidaDto buscarOdontologoPorId(Long id) {
+    public OdontologoSalidaDto buscarOdontologoPorId(long id) {
         Odontologo odontologoABuscar = odontologoRepository.findById(id).orElse(null);
         OdontologoSalidaDto odontologoSalidaDto = null;
 
@@ -60,14 +60,15 @@ public class OdontologoService implements IOdontologoService {
 
 
     @Override
-    public void eliminarOdontologo(Long id) {
+    public void eliminarOdontologo(long id) throws ResourceNotFoundException {
         Odontologo odontologoABuscar = odontologoRepository.findById(id).orElse(null);
 
         if (odontologoABuscar != null){
             odontologoRepository.deleteById(id);
-            LOGGER.info("Se elimino el odontologo con ID: {}", id);
+            LOGGER.warn("Se elimino el odontologo con ID: {}", id);
         }else {
-            LOGGER.error("Odontologo no encontrado");
+            LOGGER.error("Odontologo no encontrado con id: {}", id);
+            throw new ResourceNotFoundException("Odontologo no encontrado con id: "+ id);
         }
     }
 

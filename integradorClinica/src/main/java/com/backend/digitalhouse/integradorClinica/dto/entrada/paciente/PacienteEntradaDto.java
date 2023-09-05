@@ -19,13 +19,14 @@ public class PacienteEntradaDto {
     @NotBlank(message = "Debe especificarse el apellido del paciente")
     private String apellido;
 
-    @Pattern(regexp = "\\d+", message = "El campo dni solo admite caracteres numéricos")
-    @NotBlank(message = "Debe especificarse el dni del paciente")
+    //@Pattern(regexp = "\\d{1,8}", message = "El campo dni solo admite caracteres numéricos")
+    @NotNull(message = "Debe especificarse el dni del paciente")
+    @Digits(integer = 8, fraction = 0, message = "El número debe tener como máximo 8 dígitos")
     private int dni;
 
     @FutureOrPresent(message= "La fecha no puede ser anterior al día de hoy")
     @NotNull(message = "Debe especificarse la fecha de ingreso del paciente")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate fechaDeIngreso;
 
     @NotNull(message = "El domicilio del paciente no puede ser nulo")

@@ -9,7 +9,7 @@ public class Turno {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "TURNO_ID")
-    private Long id;
+    private long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "odontologo_id")
@@ -29,7 +29,11 @@ public class Turno {
         this.fechaYHora = fechaYHora;
     }
 
-    public Long getId() {
+    public long getId() {
+        return id;
+    }
+
+    public long setId() {
         return id;
     }
 

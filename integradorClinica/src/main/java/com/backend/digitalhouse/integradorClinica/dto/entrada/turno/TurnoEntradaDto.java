@@ -33,11 +33,11 @@ public class TurnoEntradaDto {
         this.pacienteId = pacienteId;
     }
 
-    public long getOdntologoId() {
+    public long getOdontologoId() {
         return odontologoId;
     }
 
-    public void setOdntologoId(long odntologoId) {
+    public void setOdontologoId(long odntologoId) {
         this.odontologoId = odntologoId;
     }
 

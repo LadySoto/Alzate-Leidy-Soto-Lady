@@ -4,6 +4,7 @@ import com.backend.digitalhouse.integradorClinica.dto.entrada.modificacion.Odont
 import com.backend.digitalhouse.integradorClinica.dto.entrada.odontologo.OdontologoEntradaDto;
 import com.backend.digitalhouse.integradorClinica.dto.salida.odontologo.OdontologoSalidaDto;
 import com.backend.digitalhouse.integradorClinica.entity.Odontologo;
+import com.backend.digitalhouse.integradorClinica.exceptions.ResourceNotFoundException;
 
 import java.util.List;
 
@@ -11,8 +12,8 @@ public interface IOdontologoService {
 
     OdontologoSalidaDto registrarOdontologo (OdontologoEntradaDto odontologo);
     List<OdontologoSalidaDto> listarOdontologos();
-    OdontologoSalidaDto buscarOdontologoPorId (Long id);
-    void eliminarOdontologo (Long id);
+    OdontologoSalidaDto buscarOdontologoPorId (long id);
+    void eliminarOdontologo (long id) throws ResourceNotFoundException;
     OdontologoSalidaDto modificarOdontologo (OdontologoModificacionEntradaDto odontologoModificado);
 
 }

@@ -4,6 +4,7 @@ import com.backend.digitalhouse.integradorClinica.dto.entrada.modificacion.Pacie
 import com.backend.digitalhouse.integradorClinica.dto.entrada.paciente.PacienteEntradaDto;
 import com.backend.digitalhouse.integradorClinica.dto.salida.paciente.PacienteSalidaDto;
 import com.backend.digitalhouse.integradorClinica.entity.Paciente;
+import com.backend.digitalhouse.integradorClinica.exceptions.ResourceNotFoundException;
 import com.backend.digitalhouse.integradorClinica.repository.PacienteRepository;
 import com.backend.digitalhouse.integradorClinica.service.IPacienteService;
 import org.modelmapper.ModelMapper;
@@ -44,7 +45,7 @@ public class PacienteService implements IPacienteService {
     }
 
     @Override
-    public PacienteSalidaDto buscarPacientePorId(Long id) {
+    public PacienteSalidaDto buscarPacientePorId(long id) {
         Paciente pacienteABuscar = pacienteRepository.findById(id).orElse(null);
         PacienteSalidaDto pacienteSalidaDto = null;
 
@@ -59,14 +60,15 @@ public class PacienteService implements IPacienteService {
     }
 
     @Override
-    public void eliminarPaciente(Long id) {
+    public void eliminarPaciente(long id) throws ResourceNotFoundException  {
         Paciente pacienteABuscar = pacienteRepository.findById(id).orElse(null);
 
         if (pacienteABuscar != null){
             pacienteRepository.deleteById(id);
-            LOGGER.info("Se elimino el paciente con ID: {}", id);
+            LOGGER.warn("Se elimino el paciente con ID: {}", id);
         }else {
             LOGGER.error("No se pudo eliminar el paciente con id: {}, porque no fue encontrado", id);
+            throw new ResourceNotFoundException("Paciente no encontrado con id: "+ id);
         }
     }
 
