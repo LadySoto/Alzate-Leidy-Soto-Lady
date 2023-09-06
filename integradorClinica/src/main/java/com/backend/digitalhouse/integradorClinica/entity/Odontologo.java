@@ -12,7 +12,7 @@ public class Odontologo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ODONTOLOGO_ID")
-   private long id;
+   private Long id;
 
 
    private String matricula;
@@ -36,12 +36,12 @@ public class Odontologo {
         this.turnos = turnos;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public long setId() {
-        return id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getMatricula() {

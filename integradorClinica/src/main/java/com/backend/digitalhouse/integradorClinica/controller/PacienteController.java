@@ -40,13 +40,13 @@ public class PacienteController {
 
     //Endpoint para buscar un pacientes por id - Tipo GET
     @GetMapping("buscar")
-    public ResponseEntity<PacienteSalidaDto> buscarPacientePorId(@RequestParam long id){
+    public ResponseEntity<PacienteSalidaDto> buscarPacientePorId(@RequestParam Long id){
         return new ResponseEntity<> (pacienteService.buscarPacientePorId(id),HttpStatus.OK );
     }
 
     //Endpoint para eliminar un pacientes por id - Tipo DELET
     @DeleteMapping("eliminar/{id}")
-    public ResponseEntity<?> eliminarPaciente(@PathVariable long id) throws ResourceNotFoundException {
+    public ResponseEntity<?> eliminarPaciente(@PathVariable Long id) throws ResourceNotFoundException {
         pacienteService.eliminarPaciente(id);
         return new ResponseEntity<>("Paciente eliminado correctamente",HttpStatus.NO_CONTENT);
     }

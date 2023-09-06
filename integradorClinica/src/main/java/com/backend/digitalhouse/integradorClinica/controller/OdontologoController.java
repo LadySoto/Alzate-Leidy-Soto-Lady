@@ -39,13 +39,13 @@ public class OdontologoController {
 
     //Endpoint para buscar odontologo por id - Tipo GET
     @GetMapping("buscar/{id}")
-    public ResponseEntity<OdontologoSalidaDto> buscarOdontologoPorId(@PathVariable long id){
+    public ResponseEntity<OdontologoSalidaDto> buscarOdontologoPorId(@PathVariable Long id){
         return new ResponseEntity<>(odontologoService.buscarOdontologoPorId(id),HttpStatus.OK );
     }
 
     //Endpoint para eliminar odontologo por id - Tipo DELET
     @DeleteMapping("eliminar/{id}")
-    public ResponseEntity<?> eliminarOdontologoPorId(@PathVariable long id) throws ResourceNotFoundException {
+    public ResponseEntity<?> eliminarOdontologoPorId(@PathVariable Long id) throws ResourceNotFoundException {
         odontologoService.eliminarOdontologo(id);
         return new ResponseEntity<>("Odontologo eliminado correctamente",HttpStatus.NO_CONTENT);
     }

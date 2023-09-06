@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class OdontologoModificacionEntradaDto {
     @NotNull
-    private long id;
+    private Long id;
 
     @NotNull
     private String matricula;
@@ -22,18 +22,18 @@ public class OdontologoModificacionEntradaDto {
     public OdontologoModificacionEntradaDto() {
     }
 
-    public OdontologoModificacionEntradaDto(long id, String matricula, String nombre, String apellido) {
+    public OdontologoModificacionEntradaDto(Long id, String matricula, String nombre, String apellido) {
         this.id = id;
         this.matricula = matricula;
         this.nombre = nombre;
         this.apellido = apellido;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

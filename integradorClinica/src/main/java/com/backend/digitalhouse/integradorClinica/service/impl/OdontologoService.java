@@ -44,7 +44,7 @@ public class OdontologoService implements IOdontologoService {
     }
 
     @Override
-    public OdontologoSalidaDto buscarOdontologoPorId(long id) {
+    public OdontologoSalidaDto buscarOdontologoPorId(Long id) {
         Odontologo odontologoABuscar = odontologoRepository.findById(id).orElse(null);
         OdontologoSalidaDto odontologoSalidaDto = null;
 
@@ -60,7 +60,7 @@ public class OdontologoService implements IOdontologoService {
 
 
     @Override
-    public void eliminarOdontologo(long id) throws ResourceNotFoundException {
+    public void eliminarOdontologo(Long id) throws ResourceNotFoundException {
         Odontologo odontologoABuscar = odontologoRepository.findById(id).orElse(null);
 
         if (odontologoABuscar != null){

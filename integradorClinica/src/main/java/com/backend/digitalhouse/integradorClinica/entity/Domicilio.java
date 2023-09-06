@@ -10,7 +10,7 @@ public class Domicilio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "DOMICILIO_ID")
-    private long id;
+    private Long id;
 
     private String calle;
     private int numero;
@@ -28,12 +28,12 @@ public class Domicilio {
         this.provincia = provincia;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public long setId() {
-        return id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getCalle() {
@@ -66,9 +66,5 @@ public class Domicilio {
 
     public void setProvincia(String provincia) {
         this.provincia = provincia;
-    }
-    @Override
-    public String toString() {
-        return "Id: " + id + " - Calle: " + calle + " - Numero: " + numero + " - Localidad: " + localidad + " - Provincia: " + provincia;
     }
 }

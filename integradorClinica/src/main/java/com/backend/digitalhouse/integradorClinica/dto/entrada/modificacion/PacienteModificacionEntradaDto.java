@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PacienteModificacionEntradaDto {
     @NotNull
-    private long id;
+    private Long id;
     @NotNull
     private String nombre;
 
@@ -26,7 +26,7 @@ public class PacienteModificacionEntradaDto {
     public PacienteModificacionEntradaDto() {
     }
 
-    public PacienteModificacionEntradaDto(long id, String nombre, String apellido, int dni, LocalDate fechaDeIngreso, DomicilioModificacionEntradaDto domicilio) {
+    public PacienteModificacionEntradaDto(Long id, String nombre, String apellido, int dni, LocalDate fechaDeIngreso, DomicilioModificacionEntradaDto domicilio) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -35,11 +35,11 @@ public class PacienteModificacionEntradaDto {
         this.domicilio = domicilio;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

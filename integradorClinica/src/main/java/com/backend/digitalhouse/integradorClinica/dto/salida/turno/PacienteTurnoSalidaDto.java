@@ -1,24 +1,24 @@
 package com.backend.digitalhouse.integradorClinica.dto.salida.turno;
 
 public class PacienteTurnoSalidaDto {
-    private long id;
+    private Long id;
     private String nombre;
     private String apellido;
 
     public PacienteTurnoSalidaDto() {
     }
 
-    public PacienteTurnoSalidaDto(long id, String nombre, String apellido) {
+    public PacienteTurnoSalidaDto(Long id, String nombre, String apellido) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

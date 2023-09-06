@@ -45,7 +45,7 @@ public class PacienteService implements IPacienteService {
     }
 
     @Override
-    public PacienteSalidaDto buscarPacientePorId(long id) {
+    public PacienteSalidaDto buscarPacientePorId(Long id) {
         Paciente pacienteABuscar = pacienteRepository.findById(id).orElse(null);
         PacienteSalidaDto pacienteSalidaDto = null;
 
@@ -60,7 +60,7 @@ public class PacienteService implements IPacienteService {
     }
 
     @Override
-    public void eliminarPaciente(long id) throws ResourceNotFoundException  {
+    public void eliminarPaciente(Long id) throws ResourceNotFoundException  {
         Paciente pacienteABuscar = pacienteRepository.findById(id).orElse(null);
 
         if (pacienteABuscar != null){

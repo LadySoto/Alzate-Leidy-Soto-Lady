@@ -4,43 +4,43 @@ import java.time.LocalDateTime;
 
 public class TurnoModificacionEntradaDto {
 
-    private long id;
-    private long odontologoId;
+    private Long id;
+    private Long odontologoId;
 
-    private long pacienteId;
+    private Long pacienteId;
     private LocalDateTime fechaYHora;
 
     public TurnoModificacionEntradaDto() {
     }
 
-    public TurnoModificacionEntradaDto(long id, long odontologoId, long pacienteId, LocalDateTime fechaYHora) {
+    public TurnoModificacionEntradaDto(Long id, Long odontologoId, Long pacienteId, LocalDateTime fechaYHora) {
         this.id = id;
         this.odontologoId = odontologoId;
         this.pacienteId = pacienteId;
         this.fechaYHora = fechaYHora;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public long getOdontologoId() {
+    public Long getOdontologoId() {
         return odontologoId;
     }
 
-    public void setOdontologoId(long odontologoId) {
+    public void setOdontologoId(Long odontologoId) {
         this.odontologoId = odontologoId;
     }
 
-    public long getPacienteId() {
+    public Long getPacienteId() {
         return pacienteId;
     }
 
-    public void setPacienteId(long pacienteId) {
+    public void setPacienteId(Long pacienteId) {
         this.pacienteId = pacienteId;
     }
 

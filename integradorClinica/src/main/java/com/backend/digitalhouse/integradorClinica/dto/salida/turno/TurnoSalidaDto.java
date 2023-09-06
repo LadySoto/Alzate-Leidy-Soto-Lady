@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class TurnoSalidaDto {
 
-    private long id;
+    private Long id;
     private PacienteTurnoSalidaDto pacienteTurnoSalidaDto;
     private OdontologoTurnoSalidaDto odontologoTurnoSalidaDto;
     private LocalDateTime fechaYHora;
@@ -12,18 +12,18 @@ public class TurnoSalidaDto {
     public TurnoSalidaDto() {
     }
 
-    public TurnoSalidaDto(long id, PacienteTurnoSalidaDto pacienteTurnoSalidaDto, OdontologoTurnoSalidaDto odontologoTurnoSalidaDto, LocalDateTime fechaYHora) {
+    public TurnoSalidaDto(Long id, PacienteTurnoSalidaDto pacienteTurnoSalidaDto, OdontologoTurnoSalidaDto odontologoTurnoSalidaDto, LocalDateTime fechaYHora) {
         this.id = id;
         this.pacienteTurnoSalidaDto = pacienteTurnoSalidaDto;
         this.odontologoTurnoSalidaDto = odontologoTurnoSalidaDto;
         this.fechaYHora = fechaYHora;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -49,5 +49,10 @@ public class TurnoSalidaDto {
 
     public void setFechaYHora(LocalDateTime fechaYHora) {
         this.fechaYHora = fechaYHora;
+    }
+
+    @Override
+    public String toString() {
+        return "Id: " + id + ", pacienteTurnoSalidaDto: " + pacienteTurnoSalidaDto +  ", odontologoTurnoSalidaDto: " + odontologoTurnoSalidaDto +  ", fechaYHora: " + fechaYHora;
     }
 }

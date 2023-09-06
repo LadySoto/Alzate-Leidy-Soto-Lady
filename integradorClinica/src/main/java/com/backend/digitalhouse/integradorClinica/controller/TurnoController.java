@@ -1,9 +1,13 @@
 package com.backend.digitalhouse.integradorClinica.controller;
 
 
+import com.backend.digitalhouse.integradorClinica.dto.entrada.modificacion.PacienteModificacionEntradaDto;
+import com.backend.digitalhouse.integradorClinica.dto.entrada.modificacion.TurnoModificacionEntradaDto;
 import com.backend.digitalhouse.integradorClinica.dto.entrada.turno.TurnoEntradaDto;
+import com.backend.digitalhouse.integradorClinica.dto.salida.paciente.PacienteSalidaDto;
 import com.backend.digitalhouse.integradorClinica.dto.salida.turno.TurnoSalidaDto;
 import com.backend.digitalhouse.integradorClinica.exceptions.BadRequestException;
+import com.backend.digitalhouse.integradorClinica.exceptions.ResourceNotFoundException;
 import com.backend.digitalhouse.integradorClinica.service.ITurnoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,4 +38,19 @@ public class TurnoController {
         return new ResponseEntity<>(turnoService.listarTurnos(), HttpStatus.OK);
     }
 
+    @GetMapping("/buscar")
+    public ResponseEntity<TurnoSalidaDto> buscarTurnoPorId(@RequestParam Long id){
+        return new ResponseEntity<> (turnoService.buscarTurnoPorId(id),HttpStatus.OK );
+    }
+
+    @DeleteMapping("eliminar/{id}")
+    public ResponseEntity<?> eliminarTurno(@PathVariable Long id) throws ResourceNotFoundException {
+        turnoService.eliminarTurno(id);
+        return new ResponseEntity<>("Turno eliminado correctamente",HttpStatus.NO_CONTENT);
+    }
+
+    @PutMapping("/modificar")
+    public ResponseEntity<TurnoSalidaDto> modificarTurno(@Valid @RequestBody TurnoModificacionEntradaDto turnoModificado){
+        return new ResponseEntity<>(turnoService.modificarTurno(turnoModificado), HttpStatus.OK) ;
+    }
 }
