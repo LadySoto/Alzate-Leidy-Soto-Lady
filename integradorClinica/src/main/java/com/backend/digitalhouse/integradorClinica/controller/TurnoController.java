@@ -50,7 +50,7 @@ public class TurnoController {
     }
 
     @PutMapping("/modificar")
-    public ResponseEntity<TurnoSalidaDto> modificarTurno(@Valid @RequestBody TurnoModificacionEntradaDto turnoModificado){
+    public ResponseEntity<TurnoSalidaDto> modificarTurno(@Valid @RequestBody TurnoModificacionEntradaDto turnoModificado) throws ResourceNotFoundException {
         return new ResponseEntity<>(turnoService.modificarTurno(turnoModificado), HttpStatus.OK) ;
     }
 }

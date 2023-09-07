@@ -2,20 +2,24 @@ package com.backend.digitalhouse.integradorClinica.dto.entrada.modificacion;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class OdontologoModificacionEntradaDto {
-    @NotNull
+    @NotNull(message = "Necesita ingresar un id")
     private Long id;
 
-    @NotNull
+    @NotNull(message = "Necesita ingresar una matricula")
+    @NotBlank(message = "Debe especificar la matrícula")
     private String matricula;
 
-    @NotNull
+    @NotNull(message = "Necesita ingresar un nombre")
+    @NotBlank(message = "Debe especificar el nombre")
     private String nombre;
 
-    @NotNull
+    @NotNull(message = "Necesita ingresar un apellido")
+    @NotBlank(message = "Debe especificar el apellido")
     private String apellido;
 
 

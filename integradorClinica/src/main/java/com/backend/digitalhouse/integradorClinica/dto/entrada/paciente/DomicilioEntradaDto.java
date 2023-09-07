@@ -16,9 +16,7 @@ public class DomicilioEntradaDto {
     private String calle;
 
     @NotNull(message = "El numero no puede ser nulo")
-    @NotBlank (message = "Debe ingresarse el numero")
-    //@Digits(integer = 8, fraction = 0, message = "El numero debe tener como maximo 8 dígitos")
-    @Pattern(regexp = "\\d{1,8}", message = "El numero debe tener como maximo 8 dígitos")
+    @Digits(integer = 8, fraction = 0, message = "El numero debe tener como maximo 8 dígitos")
     private int numero;
 
     @NotNull(message = "La localidad no puede ser nula")

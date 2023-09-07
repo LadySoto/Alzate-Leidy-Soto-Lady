@@ -4,6 +4,7 @@ import com.backend.digitalhouse.integradorClinica.entity.Domicilio;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -30,6 +31,7 @@ public class PacienteEntradaDto {
     private LocalDate fechaDeIngreso;
 
     @NotNull(message = "El domicilio del paciente no puede ser nulo")
+    @Valid
     private DomicilioEntradaDto domicilio;
 
     public PacienteEntradaDto() {

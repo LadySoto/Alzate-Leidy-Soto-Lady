@@ -39,7 +39,7 @@ public class TurnoSalidaDto {
         return odontologoTurnoSalidaDto;
     }
 
-    public void setOdontologoSalidaDto(OdontologoTurnoSalidaDto odontologoTurnoSalidaDto) {
+    public void setOdontologoTurnoSalidaDto(OdontologoTurnoSalidaDto odontologoTurnoSalidaDto) {
         this.odontologoTurnoSalidaDto = odontologoTurnoSalidaDto;
     }
 
