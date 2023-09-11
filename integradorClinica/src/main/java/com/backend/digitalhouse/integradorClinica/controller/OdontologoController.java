@@ -26,6 +26,7 @@ public class OdontologoController {
     }
 
     //Endpoint para registrar odontologo - Tipo POST
+    @CrossOrigin(origins = "http://127.0.0.1:5500")
     @PostMapping("registrar")
     public ResponseEntity<OdontologoSalidaDto> registrarOdontologo(@Valid @RequestBody OdontologoEntradaDto odontologo){
         return new ResponseEntity<>(odontologoService.registrarOdontologo(odontologo), HttpStatus.CREATED);
