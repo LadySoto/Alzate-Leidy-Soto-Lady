@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Odontológica</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <div id="clinic-name">PORTAL PACIENTES</div>
+        
+
+        <div id="input-data">
+
+            <h1>Datos del Paciente</h1>
+            <form id="formulario-datos" onsubmit="enviarDatos(); return false;">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre"><br><br>
+        
+                <label for="apellido">Apellido:</label>
+                <input type="text" id="apellido" name="apellido"><br><br>
+        
+                <label for="dni">Dni:</label>
+                <input type="number" id="dni" name="dni"><br><br>
+
+                <label for="fechaDeIngreso">FechaDeIngreso:</label>
+                <input type="text" id="fechaDeIngreso" name="fechaDeIngreso"><br><br>
+
+                <label for="domicilio">Datos del Domicilio</label><br><br>
+
+                <label for="calle">Calle:</label>
+                <input type="text" id="calle" name="calle"><br><br>
+        
+                <label for="numero">Numero:</label>
+                <input type="number" id="numero" name="numero"><br><br>
+        
+                <label for="localidad">Localidad:</label>
+                <input type="text" id="localidad" name="localidad"><br><br>
+
+                <label for="provincia">Provincia:</label>
+                <input type="text" id="provincia" name="provincia"><br><br>
+
+
+        
+                <input type="submit" value="Enviar">
+            </form>
+        </div>
+    </header>
+    
+</body>
+<script src="./script/pacientes.js"></script> 
+</html>
+

@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+header {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 20px;
+}
+
+#clinic-name {
+    color: #ff583b;
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+#clinic-image {
+    max-width: 70%;
+    height: auto;
+}
+
+#button-container {
+    background-color: #ffffff;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff583b;
+    color: #0a0a0a;
+    text-decoration: none;
+    margin: 10px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: #357ebd;
+}
+
+
+/* Pagina odontologos */
+
+#input-data {
+    background-color: #ffffff;
+    text-align: center;
+    margin-top: 20px;
+}
+
