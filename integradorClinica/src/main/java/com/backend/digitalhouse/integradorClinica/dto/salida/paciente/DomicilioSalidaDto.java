@@ -58,4 +58,8 @@ public class DomicilioSalidaDto {
     public void setProvincia(String provincia) {
         this.provincia = provincia;
     }
+
+    public String toString() {
+        return "Id: " + id + ", calle: " + calle + ", número: " + numero + ", localidad: " + localidad + ", provincia: " + provincia;
+    }
 }

@@ -37,4 +37,7 @@ public class PacienteTurnoSalidaDto {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
+    public String toString() {
+        return "Id: " + id + ", nombre: " + nombre +  ", apellido: " + apellido;
+    }
 }
