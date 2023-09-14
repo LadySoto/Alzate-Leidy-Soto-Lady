@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class PacienteService implements IPacienteService {
 
@@ -49,10 +50,10 @@ public class PacienteService implements IPacienteService {
         Paciente pacienteABuscar = pacienteRepository.findById(id).orElse(null);
         PacienteSalidaDto pacienteSalidaDto = null;
 
-        if (pacienteABuscar != null){
+        if (pacienteABuscar != null) {
             pacienteSalidaDto = mapToDtoSalida(pacienteABuscar);
             LOGGER.info("Paciente encontrado: {}", pacienteSalidaDto);
-        }else {
+        } else {
             LOGGER.error("Paciente no encontrado");
         }
 
@@ -60,15 +61,15 @@ public class PacienteService implements IPacienteService {
     }
 
     @Override
-    public void eliminarPaciente(Long id) throws ResourceNotFoundException  {
+    public void eliminarPaciente(Long id) throws ResourceNotFoundException {
         Paciente pacienteABuscar = pacienteRepository.findById(id).orElse(null);
 
-        if (pacienteABuscar != null){
+        if (pacienteABuscar != null) {
             pacienteRepository.deleteById(id);
             LOGGER.warn("Se elimino el paciente con ID: {}", id);
-        }else {
+        } else {
             LOGGER.error("No se pudo eliminar el paciente con id: {}, porque no fue encontrado", id);
-            throw new ResourceNotFoundException("Paciente no encontrado con id: "+ id);
+            throw new ResourceNotFoundException("Paciente no encontrado con id: " + id);
         }
     }
 
@@ -76,16 +77,16 @@ public class PacienteService implements IPacienteService {
     public PacienteSalidaDto modificarPaciente(PacienteModificacionEntradaDto pacienteModificado) {
         PacienteSalidaDto pacienteSalidaDto = null;
 
-        if (buscarPacientePorId(pacienteModificado.getId()) != null){
+        if (buscarPacientePorId(pacienteModificado.getId()) != null) {
             pacienteSalidaDto = mapToDtoSalida(pacienteRepository.save(mapDtoModificadoToEntity(pacienteModificado)));
             LOGGER.info("El paciente: {}, fue modificado exitosamente", pacienteModificado);
-        }else{
+        } else {
             LOGGER.error("el paciente: {}, no pudo ser modificado porque no se encontró", pacienteModificado);
         }
         return pacienteSalidaDto;
     }
 
-    private void configureMapping(){
+    private void configureMapping() {
         modelMapper.typeMap(PacienteEntradaDto.class, Paciente.class)
                 .addMappings(mapper -> mapper.map(PacienteEntradaDto::getDomicilio, Paciente::setDomicilio));
         modelMapper.typeMap(Paciente.class, PacienteSalidaDto.class)
@@ -94,15 +95,15 @@ public class PacienteService implements IPacienteService {
                 .addMappings(mapper -> mapper.map(PacienteModificacionEntradaDto::getDomicilio, Paciente::setDomicilio));
     }
 
-    public Paciente mapToEntity(PacienteEntradaDto pacienteEntradaDto){
+    public Paciente mapToEntity(PacienteEntradaDto pacienteEntradaDto) {
         return modelMapper.map(pacienteEntradaDto, Paciente.class);
     }
 
-    public PacienteSalidaDto mapToDtoSalida(Paciente paciente){
+    public PacienteSalidaDto mapToDtoSalida(Paciente paciente) {
         return modelMapper.map(paciente, PacienteSalidaDto.class);
     }
 
-    public Paciente mapDtoModificadoToEntity(PacienteModificacionEntradaDto pacienteEntradaDto){
+    public Paciente mapDtoModificadoToEntity(PacienteModificacionEntradaDto pacienteEntradaDto) {
         return modelMapper.map(pacienteEntradaDto, Paciente.class);
     }
 

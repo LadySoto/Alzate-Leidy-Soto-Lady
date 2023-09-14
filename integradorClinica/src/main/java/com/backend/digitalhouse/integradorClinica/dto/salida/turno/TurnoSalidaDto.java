@@ -53,6 +53,6 @@ public class TurnoSalidaDto {
 
     @Override
     public String toString() {
-        return "Id: " + id + ", pacienteTurnoSalidaDto: " + pacienteTurnoSalidaDto +  ", odontologoTurnoSalidaDto: " + odontologoTurnoSalidaDto +  ", fechaYHora: " + fechaYHora;
+        return "Id: " + id + ", pacienteTurnoSalidaDto: " + pacienteTurnoSalidaDto + ", odontologoTurnoSalidaDto: " + odontologoTurnoSalidaDto + ", fechaYHora: " + fechaYHora;
     }
 }

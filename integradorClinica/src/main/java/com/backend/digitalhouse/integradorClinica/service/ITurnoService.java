@@ -9,9 +9,13 @@ import com.backend.digitalhouse.integradorClinica.exceptions.ResourceNotFoundExc
 import java.util.List;
 
 public interface ITurnoService {
-    TurnoSalidaDto registrarTurno (TurnoEntradaDto turno) throws BadRequestException;
+    TurnoSalidaDto registrarTurno(TurnoEntradaDto turno) throws BadRequestException;
+
     List<TurnoSalidaDto> listarTurnos();
-    TurnoSalidaDto buscarTurnoPorId (Long id);
+
+    TurnoSalidaDto buscarTurnoPorId(Long id);
+
     void eliminarTurno(Long id) throws ResourceNotFoundException;
-    TurnoSalidaDto modificarTurno (TurnoModificacionEntradaDto turnoModificado) throws ResourceNotFoundException;
+
+    TurnoSalidaDto modificarTurno(TurnoModificacionEntradaDto turnoModificado) throws ResourceNotFoundException;
 }

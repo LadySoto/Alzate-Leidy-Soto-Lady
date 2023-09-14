@@ -1,6 +1,5 @@
 package com.backend.digitalhouse.integradorClinica.dto.entrada.modificacion;
 
-import com.backend.digitalhouse.integradorClinica.entity.Domicilio;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -27,7 +26,6 @@ public class PacienteModificacionEntradaDto {
     @NotNull(message = "Necesita ingresar una fecha")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @FutureOrPresent(message = "La fecha no puede ser anterior al día de hoy")
-    //@NotBlank(message = "Debe especificar la fecha")
     private LocalDate fechaDeIngreso;
 
     @NotNull(message = "Necesita ingresar un domicilio")

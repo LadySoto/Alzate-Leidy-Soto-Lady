@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -28,39 +27,39 @@ public class OdontologoServiceTest {
 
     @Test
     @Order(1)
-    void debePermitirRegistraUnOdontologo(){
+    void debePermitirRegistraUnOdontologo() {
 
-        OdontologoEntradaDto odontologoEntradaDto = new OdontologoEntradaDto("AH-1236987","Marcos","Franca");
+        OdontologoEntradaDto odontologoEntradaDto = new OdontologoEntradaDto("AH-1236987", "Marcos", "Franca");
 
         OdontologoSalidaDto rtaObtenida = odontologoService.registrarOdontologo(odontologoEntradaDto);
 
-        assertEquals("AH-1236987",rtaObtenida.getMatricula());
+        assertEquals("AH-1236987", rtaObtenida.getMatricula());
     }
 
     @Test
     @Order(2)
-    void debeListartodosLosOdontologos(){
+    void debeListartodosLosOdontologos() {
         List<OdontologoSalidaDto> listaOdontologos = odontologoService.listarOdontologos();
         assertNotNull(listaOdontologos);
     }
 
     @Test
     @Order(4)
-    void seDebePoderModificarUnOdontologo(){
-        OdontologoModificacionEntradaDto odontologoModificado = new OdontologoModificacionEntradaDto(1L,"AH-1236987","Felipe","Gomez");
+    void seDebePoderModificarUnOdontologo() {
+        OdontologoModificacionEntradaDto odontologoModificado = new OdontologoModificacionEntradaDto(1L, "AH-1236987", "Felipe", "Gomez");
 
-        assertEquals("Felipe",odontologoService.modificarOdontologo(odontologoModificado).getNombre());
+        assertEquals("Felipe", odontologoService.modificarOdontologo(odontologoModificado).getNombre());
     }
 
     @Test
     @Order(3)
-    void sePuedeBuscarUnOdontologoPorId(){
+    void sePuedeBuscarUnOdontologoPorId() {
         assertEquals("Marcos", odontologoService.buscarOdontologoPorId(1L).getNombre());
     }
 
     @Test
     @Order(5)
-    void sePuedeEliminarUnOdontologoPorId(){
+    void sePuedeEliminarUnOdontologoPorId() {
         try {
             odontologoService.eliminarOdontologo(1L);
         } catch (Exception e) {

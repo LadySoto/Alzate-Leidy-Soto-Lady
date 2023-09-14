@@ -19,6 +19,7 @@ function enviarDatos() {
     fetch(urlServicio, opciones)
       .then(response => {
         if (!response.ok) {
+          alert ('Error en la solicitud');
           throw new Error('Error en la solicitud al servicio');
         }
         return response.json();

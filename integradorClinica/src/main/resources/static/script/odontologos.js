@@ -19,6 +19,7 @@ function enviarDatos() {
     fetch(urlServicio, opciones)
       .then(response => {
         if (!response.ok) {
+          alert ('Error en la solicitud');
           throw new Error('Error en la solicitud al servicio');
         }
         return response.json();
@@ -26,7 +27,6 @@ function enviarDatos() {
       .then(data => {
         const id_response = "El ID del odontólogo " + data.nombre + " " + data.apellido + " es " + data.id;
         alert(id_response);
-        // Puedes hacer más cosas con la respuesta aquí si es necesario
       })
       .catch(error => {
         console.error('Error:', error);

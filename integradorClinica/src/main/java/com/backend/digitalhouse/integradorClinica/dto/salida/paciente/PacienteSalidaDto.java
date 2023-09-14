@@ -1,7 +1,5 @@
 package com.backend.digitalhouse.integradorClinica.dto.salida.paciente;
 
-import com.backend.digitalhouse.integradorClinica.entity.Domicilio;
-
 import java.time.LocalDate;
 
 public class PacienteSalidaDto {
@@ -72,6 +70,7 @@ public class PacienteSalidaDto {
     public void setDomicilio(DomicilioSalidaDto domicilio) {
         this.domicilio = domicilio;
     }
+
     @Override
     public String toString() {
         return "Id: " + id + " - Nombre: " + nombre + " - Apellido: " + apellido + " - DNI: " + dni + " - Fechas de ingreso: " + fechaDeIngreso + " - Domicilio: " + domicilio;

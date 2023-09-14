@@ -1,13 +1,12 @@
 package com.backend.digitalhouse.integradorClinica.entity;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table (name = "PACIENTES")
+@Table(name = "PACIENTES")
 public class Paciente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

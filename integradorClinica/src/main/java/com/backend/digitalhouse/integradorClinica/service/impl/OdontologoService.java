@@ -12,7 +12,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -48,10 +47,10 @@ public class OdontologoService implements IOdontologoService {
         Odontologo odontologoABuscar = odontologoRepository.findById(id).orElse(null);
         OdontologoSalidaDto odontologoSalidaDto = null;
 
-        if (odontologoABuscar != null){
+        if (odontologoABuscar != null) {
             odontologoSalidaDto = mapToDtoSalida(odontologoABuscar);
             LOGGER.info("Odontologo encontrado: {}", odontologoSalidaDto);
-        }else {
+        } else {
             LOGGER.error("Odontologo no encontrado");
         }
 
@@ -63,12 +62,12 @@ public class OdontologoService implements IOdontologoService {
     public void eliminarOdontologo(Long id) throws ResourceNotFoundException {
         Odontologo odontologoABuscar = odontologoRepository.findById(id).orElse(null);
 
-        if (odontologoABuscar != null){
+        if (odontologoABuscar != null) {
             odontologoRepository.deleteById(id);
             LOGGER.warn("Se elimino el odontologo con ID: {}", id);
-        }else {
+        } else {
             LOGGER.error("Odontologo no encontrado con id: {}", id);
-            throw new ResourceNotFoundException("Odontologo no encontrado con id: "+ id);
+            throw new ResourceNotFoundException("Odontologo no encontrado con id: " + id);
         }
     }
 
@@ -76,24 +75,24 @@ public class OdontologoService implements IOdontologoService {
     public OdontologoSalidaDto modificarOdontologo(OdontologoModificacionEntradaDto odontologoModificado) {
         OdontologoSalidaDto odontologoSalidaDto = null;
 
-        if (buscarOdontologoPorId(odontologoModificado.getId()) != null){
+        if (buscarOdontologoPorId(odontologoModificado.getId()) != null) {
             odontologoSalidaDto = mapToDtoSalida(odontologoRepository.save(mapDtoModificadoToEntity(odontologoModificado)));
             LOGGER.info("El odontologo: {}, fue modificado exitosamente", odontologoModificado);
-        }else{
+        } else {
             LOGGER.error("el odontologo: {}, no pudo ser modificado porque no se encontró", odontologoModificado);
         }
         return odontologoSalidaDto;
     }
 
-    public Odontologo mapToEntity(OdontologoEntradaDto odontologoEntradaDto){
+    public Odontologo mapToEntity(OdontologoEntradaDto odontologoEntradaDto) {
         return modelMapper.map(odontologoEntradaDto, Odontologo.class);
     }
 
-    public Odontologo mapDtoModificadoToEntity(OdontologoModificacionEntradaDto odontologoModificado){
+    public Odontologo mapDtoModificadoToEntity(OdontologoModificacionEntradaDto odontologoModificado) {
         return modelMapper.map(odontologoModificado, Odontologo.class);
     }
 
-    public OdontologoSalidaDto mapToDtoSalida(Odontologo odontologo){
+    public OdontologoSalidaDto mapToDtoSalida(Odontologo odontologo) {
         return modelMapper.map(odontologo, OdontologoSalidaDto.class);
     }
 }

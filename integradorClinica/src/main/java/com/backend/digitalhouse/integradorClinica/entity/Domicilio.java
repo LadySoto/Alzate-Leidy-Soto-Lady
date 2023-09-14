@@ -1,7 +1,5 @@
 package com.backend.digitalhouse.integradorClinica.entity;
 
-import jdk.jfr.Enabled;
-
 import javax.persistence.*;
 
 @Entity

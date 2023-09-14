@@ -1,7 +1,5 @@
 package com.backend.digitalhouse.integradorClinica.entity;
 
-import jdk.dynalink.linker.LinkerServices;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,19 +10,19 @@ public class Odontologo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ODONTOLOGO_ID")
-   private Long id;
+    private Long id;
 
 
-   private String matricula;
-
-    @Column(length = 50)
-   private String nombre;
+    private String matricula;
 
     @Column(length = 50)
-   private String apellido;
+    private String nombre;
 
-   @OneToMany(mappedBy = "odontologo", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-   private List<Turno> turnos = new ArrayList<>();
+    @Column(length = 50)
+    private String apellido;
+
+    @OneToMany(mappedBy = "odontologo", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private List<Turno> turnos = new ArrayList<>();
 
     public Odontologo() {
     }

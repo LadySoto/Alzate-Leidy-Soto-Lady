@@ -1,7 +1,5 @@
 package com.backend.digitalhouse.integradorClinica.dto.salida.odontologo;
 
-import javax.persistence.Column;
-
 public class OdontologoSalidaDto {
 
     private Long id;

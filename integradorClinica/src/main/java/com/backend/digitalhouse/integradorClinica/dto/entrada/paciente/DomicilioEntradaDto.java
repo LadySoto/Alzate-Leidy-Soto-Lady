@@ -5,14 +5,14 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 
-@JsonIgnoreProperties(ignoreUnknown = true) // indica que ignore todas las propiedades desconocidas presentes en el JSON y solo mapee las propiedades que coinciden con los campos de la clase.
+@JsonIgnoreProperties(ignoreUnknown = true)
+// indica que ignore todas las propiedades desconocidas presentes en el JSON y solo mapee las propiedades que coinciden con los campos de la clase.
 
 public class DomicilioEntradaDto {
 
     @NotNull(message = "La calle no puede ser nula")
-    @NotBlank (message = "Debe ingresarse el nombre de la calle")
+    @NotBlank(message = "Debe ingresarse el nombre de la calle")
     private String calle;
 
     @NotNull(message = "El numero no puede ser nulo")
@@ -20,11 +20,11 @@ public class DomicilioEntradaDto {
     private int numero;
 
     @NotNull(message = "La localidad no puede ser nula")
-    @NotBlank (message = "Debe ingresarse una localidad")
+    @NotBlank(message = "Debe ingresarse una localidad")
     private String localidad;
 
     @NotNull(message = "La provincia no puede ser nula")
-    @NotBlank (message = "Debe ingresarse una provincia")
+    @NotBlank(message = "Debe ingresarse una provincia")
     private String provincia;
 
     public DomicilioEntradaDto() {
